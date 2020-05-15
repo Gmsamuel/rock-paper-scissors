@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>rockpaperscissors</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <script>
+            function computerPlay() {
+                var options = ['rock', 'paper', 'scissors'];
+                return options[Math.floor(Math.random() * options.length)];               
+            }
+
+            //runs throught round with choices as input, returns winner
+            function playRound(playerChoice, computerChoice){
+                var playerChoice = playerChoice.toLowerCase();
+                switch(true) {
+                    
+                    case (playerChoice == 'rock' && computerChoice =='scissors'):
+                            return 'player';
+
+                    case (playerChoice == 'rock' && computerChoice =='paper'):
+                            return 'computer';
+
+
+                    case (playerChoice == 'paper' && computerChoice =='rock'):
+                            return 'player';
+
+                            
+                    case (playerChoice == 'paper' && computerChoice =='scissors'):
+                            return 'computer';
+
+                    case (playerChoice == 'scissors' && computerChoice =='rock'):
+                            return 'computer';
+
+                    case (playerChoice == 'scissors' && computerChoice =='paper'):
+                            return 'player';
+
+
+                    default :
+                            return 'tie';
+                }
+            }
+
+            function game() {
+                var i;
+                var playerWinCount = 0;
+                var computerWinCount = 0;
+                for (i = 0; i < 5; i++) {
+                    var playerChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
+                    var computerChoice = computerPlay();
+                    if (playerChoice == null)
+                    {
+                        alert('No choice was given');
+                        return;
+                    }
+                    else if (playerChoice !== 'rock' && playerChoice !== 'paper' && playerChoice !== 'scissors') {
+                        alert('Invalid Choice');
+                        return;
+                    }
+                    else {
+                        let winner = playRound(playerChoice, computerChoice);
+                        if (winner == 'player'){
+                            playerWinCount += 1;
+                            alert (`Player: ${playerChoice}
+                            Computer: ${computerChoice}
+                            Player Wins the Round!` );
+                        }
+                        else if (winner == 'computer'){
+                            computerWinCount += 1;
+                            alert (`Player: ${playerChoice}
+                            Computer: ${computerChoice}
+                            Computer Wins the Round!` );
+                        }
+                        else {
+                            alert (`Player: ${playerChoice}
+                            Computer: ${computerChoice}
+                            Tie Round!`)
+                        }
+                    }
+                }
+
+                if (playerWinCount > computerWinCount){
+                    return `player wins: ${playerWinCount}
+                    computer wins: ${computerWinCount}
+                    You won the game!`;
+                }
+
+                else if (playerWinCount < computerWinCount){
+                    return `player wins: ${playerWinCount}
+                    computer wins: ${computerWinCount}
+                    You lost, better luck next time!`;
+                }
+
+                else{
+                    return 'Tie! There are no winners.';
+                }
+            }
+
+
+
+
+        </script>
+    </body>
+</html>
