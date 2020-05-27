@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>rockpaperscissors</title>
+        <meta charset="UTF-8"/>
+
+        <link rel='stylesheet' href='styles/styles.css'>
+    </head>
+    <body>
+        <h1>Rock, Paper Scissors</h1>
+        <div id='output'>
+            <button id='begin'>Begin Game</button>
+        </div>
+        <div id='buttons' class='hidden'>
+            <button type='button' class='button' id='rock'>Rock</button>
+            <button type='button' class='button' id='paper'>Paper</button>
+            <button type='button' class='button' id='scissors'>Scissors</button>
+        </div>
+        <script>
+            function computerPlay() {
+                var options = ['rock', 'paper', 'scissors'];
+                return options[Math.floor(Math.random() * options.length)];               
+            }
+
+            //runs throught round with choices as input, returns winner
+            function playRound(playerChoice, computerChoice){
+                var playerChoice = playerChoice.toLowerCase();
+                switch(true) {
+                    
+                    case (playerChoice == 'rock' && computerChoice =='scissors'):
+                            return 'player';
+
+                    case (playerChoice == 'rock' && computerChoice =='paper'):
+                            return 'computer';
+
+
+                    case (playerChoice == 'paper' && computerChoice =='rock'):
+                            return 'player';
+
+                            
+                    case (playerChoice == 'paper' && computerChoice =='scissors'):
+                            return 'computer';
+
+                    case (playerChoice == 'scissors' && computerChoice =='rock'):
+                            return 'computer';
+
+                    case (playerChoice == 'scissors' && computerChoice =='paper'):
+                            return 'player';
+
+
+                    default :
+                            return 'tie';
+                }
+            }
+
+            function game() {
+                const output = document.querySelector('#output');
+
+                const playerWinCount = document.createElement('p');
+                playerWinCount.textContent = 'Player Wins: 0';
+
+                const computerWinCount = document.createElement('p');
+                computerWinCount.textContent = 'computer Wins: 0';
+
+                const winner = document.createElement('p');
+                winner.textContent = 'Best of 5, Good Luck!'
+
+                output.appendChild(playerWinCount);
+                output.appendChild(computerWinCount);
+                output.appendChild(winner);
+
+
+
+                //show choice buttons
+                const buttons = document.querySelector('#buttons');
+                buttons.classList.remove('hidden');
+
+                const buttons = document.querySelectorAll('button');
+                buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    playRound(button.id, computerPlay());
+                });
+            });
+
+                let playerWins = 0;
+                let computerWins = 0;
+                let totalRounds = 0;
+
+                while(totalRounds < 5) {
+
+                }
+
+
+            }
+
+
+            const begin = document.querySelector('#begin');
+            begin.addEventListener('click', (e) => {
+                begin.remove();
+                game();
+            });
+
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    playRound(button.id, computerPlay());
+                });
+            });
+
+
+        </script>
+    </body>
+</html>

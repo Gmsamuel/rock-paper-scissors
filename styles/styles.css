@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+}
+
+#output {
+    margin: 0 auto;
+    width: 400px;
+    height: 200px;
+    background-color: rgba(121, 119, 118, 0.397);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#begin {
+    background-color: black;
+    color: white;
+    width: 30%;
+    height: 20%;
+    font-size: medium;
+}
+
+#buttons {
+    margin: 0 auto;
+    padding-top: 10px;
+    width: 400px;
+    display: flex;
+    justify-content: space-evenly;   
+}
+
+.hidden {
+    visibility: hidden;
+}
+
